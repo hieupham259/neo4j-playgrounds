@@ -15,7 +15,7 @@ def main():
                       ("Arthur", "Merlin")]
         driver.execute_query("""
             UNWIND $pairs AS pair
-            MERGE (a:Person {name: pair[0]})
+            MERGE (a:Person {name: pair[0]}) # MERGE: create node if not exists, else find it
             MERGE (a)-[:KNOWS]->(friend:Person {name: pair[1]})
             """, pairs=input_list,
             database_="<database-name>",
