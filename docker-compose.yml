@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:2025.09.0
+    container_name: neo4j_playgrounds
+    restart: always
+    ports:
+      - "7474:7474"  # HTTP
+      - "7687:7687"  # Bolt
+    environment:
+      - NEO4J_AUTH=neo4j/admin123
+      - NEO4J_dbms_default__database=neo4j
+    volumes:
+      - D:/neo4j_volume:/data
+    networks:
+      - neo4j_network
+
+networks:
+  neo4j_network:
+    driver: bridge

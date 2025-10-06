@@ -1,5 +1,9 @@
+import neo4j
 from neo4j_driver import Neo4jConnection
-        
+
+from manipulate_results import transform_to_graph
+
+
 def query_graph(driver, query_string, parameters=None, database_name="neo4j"):
     """
     Execute a query using driver.execute_query and return records, summary, and keys
@@ -71,6 +75,22 @@ def example_query_graph(driver):
     finally:
         neo4j_conn.close()
 
+def example_result_graph(driver):
+    graph_result = driver.execute_query("""
+        MATCH (a:Person {name: $name})-[r]-(b)
+        RETURN a, r, b
+        """, name="Bob 1",
+        result_transformer_=neo4j.Result.graph,
+    )
+    print(f"Graph result has {len(graph_result.nodes)} nodes and {len(graph_result.relationships)} relationships.")
+
+    # Draw graph
+    nodes_text_properties = {  # what property to use as text for each node
+            "Person": "name",
+            "Film": "title",
+    }
+    transform_to_graph(graph_result, nodes_text_properties)
+
 # Usage example
 if __name__ == "__main__":
     # Create connection
@@ -102,6 +122,7 @@ if __name__ == "__main__":
         query_string = "MATCH (p:Person) RETURN p.name AS name"
         records, summary, keys = query_graph(driver=driver, query_string=query_string)
         
+        example_result_graph(driver=driver)
     finally:
         # Always close the connection
         neo4j_conn.close()
