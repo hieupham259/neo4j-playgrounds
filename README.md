@@ -26,5 +26,6 @@ Additional Resources:
 - [Neo4j Getting Started Guide](https://neo4j.com/docs/getting-started/)
 - [Cypher Query Language Reference](https://neo4j.com/docs/cypher-manual/current/)
 - [Graph Data Modeling Concepts](https://neo4j.com/developer/data-modeling/)
+- [Neo4j Python Driver Transformers](https://neo4j.com/docs/python-manual/current/transformers/)
 
 ---
