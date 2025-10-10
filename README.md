@@ -30,7 +30,7 @@ Additional Resources:
 
 ---
 
-## Execution
+## ▶️ Execution
 Run each module as a standalone script. For example, to run the multi-query transaction example:
 
 ```bash
