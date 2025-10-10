@@ -1,5 +1,5 @@
 import neo4j
-from neo4j_driver import Neo4jConnection
+from neo4j.connection import Neo4jConnection
 
 from manipulate_results import transform_to_graph
 

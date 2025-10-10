@@ -1,6 +1,6 @@
 import neo4j
 import pyvis
-from neo4j_driver import Neo4jConnection
+from neo4j.connection import Neo4jConnection
 
 
 def transform_to_df():
