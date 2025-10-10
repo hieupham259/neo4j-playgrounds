@@ -1,7 +1,7 @@
 import db
 from db.connection import Neo4jConnection
 
-from manipulate_results import transform_to_graph
+from regular_workflow.manipulate_results import transform_to_graph
 
 
 def query_graph(driver, query_string, parameters=None, database_name="neo4j"):

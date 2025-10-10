@@ -1,6 +1,6 @@
 import pyvis
-from neo4j import GraphDatabase
-import neo4j
+from db import GraphDatabase
+import db
 
 
 URI = "<database-uri>"
@@ -35,7 +35,7 @@ def main():
             MATCH (a:Person {name: $name})-[r]-(b)
             RETURN a, r, b
             """, name="Arthur",
-            result_transformer_=neo4j.Result.graph,
+            result_transformer_=db.Result.graph,
         )
 
         # Draw graph

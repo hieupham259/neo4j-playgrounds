@@ -1,6 +1,6 @@
-import neo4j
+import db
 import pyvis
-from neo4j.connection import Neo4jConnection
+from db.connection import Neo4jConnection
 
 
 def transform_to_df():
@@ -15,7 +15,7 @@ def transform_to_df():
         pandas_df = driver.execute_query(
             "UNWIND range(1, 10) AS n RETURN n, n+1 AS m",
             database_="neo4j",
-            result_transformer_=neo4j.Result.to_df
+            result_transformer_=db.Result.to_df
         )
         print(pandas_df)
     finally:
