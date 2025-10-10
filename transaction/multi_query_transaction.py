@@ -1,18 +1,15 @@
-from neo4j import GraphDatabase
+from db.connection import Neo4jConnection
 
-
-URI = "<database-uri>"
-AUTH = ("<username>", "<password>")
 employee_threshold=10
 
-
 def main():
-    with GraphDatabase.driver(URI, auth=AUTH) as driver:
-        with driver.session(database="<database-name>") as session:
-            for i in range(100):
-                name = f"Thor{i}"
-                org_id = session.execute_write(employ_person_tx, name)
-                print(f"User {name} added to organization {org_id}")
+    neo4j_conn = Neo4jConnection()
+    driver = neo4j_conn._Neo4jConnection__driver  # access the underlying
+    with driver.session(database="neo4j") as session:
+        for i in range(100):
+            name = f"Thor{i}"
+            org_id = session.execute_write(employ_person_tx, name)
+            print(f"User {name} added to organization {org_id}")
 
 
 def employ_person_tx(tx, name):

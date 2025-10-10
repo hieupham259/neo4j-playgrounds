@@ -29,3 +29,10 @@ Additional Resources:
 - [Neo4j Python Driver Transformers](https://neo4j.com/docs/python-manual/current/transformers/)
 
 ---
+
+## Execution
+Run each module as a standalone script. For example, to run the multi-query transaction example:
+
+```bash
+python -m transaction.multi_query_transaction
+```
